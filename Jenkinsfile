@@ -13,10 +13,10 @@ def buildInfo
 pipeline {
     agent any
 
-	tools {
-		jdk "jdk12"
-		maven "M3"
-	}
+	//tools {
+		//jdk "jdk12"
+		//maven "M3"
+	//}
 
     stages {
         stage('Git Checkout'){
