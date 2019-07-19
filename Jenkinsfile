@@ -14,14 +14,14 @@ pipeline {
     agent any
 
 	tools {
-		jdk "jdk8"
+		jdk "jdk12"
 		maven "M3"
 	}
 
     stages {
         stage('Git Checkout'){
             steps {
-                git url: 'https://github.com/priya1233/testPipelineSrcCode.git'
+                git url: 'https://github.com/Debasis04/Testpipelinesrccode.git'
             }
         }
 
@@ -33,22 +33,11 @@ pipeline {
 	      }
 	}
 
-//	stage('Quality Gate') {
-//		steps {
-//			timeout(time: 1, unit: 'HOURS') {
-			//Parameter indicates wether to set pipeline to UNSTABLE if Quality Gate fails
-		        // true = set pipeline to UNSTABLE, false = don't
-			// Requires SonarQube Scanner for Jenkins 2.7+
-//			waitForQualityGate abortPipeline: false
-//		       }
-//		 }
-//	}
 
 	    stage('Build') {
 		steps {
 		   script {
 		echo 'Execute Maven will build the pom.xml which is there in source code repository'
-		//rtMaven.run pom: 'pom.xml', goals: 'clean install', buildInfo: buildInfo
 			}
 		}
 		
@@ -57,8 +46,8 @@ pipeline {
 		
 	   steps {
 		script {
-			rtMaven.tool = 'Maven-3.5.3' //Maven tool name specified in Jenkins configuration
-			echo 'The artefacts beuilt in Build stage are pushed to Nexus/ Artefactory repo'
+			rtMaven.tool = 'Maven-3.6.1' //Maven tool name specified in Jenkins configuration
+			echo 'The artefacts beuilt in Build stage are pushed to Artefactory repo'
 			}
 	    }
 	}
